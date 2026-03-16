@@ -1,5 +1,5 @@
 import math, os
-from tokenize import Double
+
 question = None
 avalible_operations = ["-", "+", "/", "*", "^", "root", "clear screen"]
 operator = {
@@ -13,6 +13,7 @@ operator = {
 }
 
 while True:
+    question = "N"
     numb = 1
     for no in avalible_operations:
         print(f"{numb}) {no}")
@@ -38,7 +39,7 @@ while True:
     
    
     if operation != "root":
-        num2 = int(input("please enter second number ").strip().upper())
+        num2 = float(input("please enter second number ").strip().upper())
     if operation == "-":
         num3 = num1 - num2
         print(f"{num1} - {num2} = {num3}\n")
