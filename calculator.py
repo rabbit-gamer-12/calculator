@@ -1,13 +1,14 @@
 import math, os
+from tokenize import Double
 question = None
-avalible_operations = ["-", "+", "/", "*", "^", "square root", "clear screen"]
+avalible_operations = ["-", "+", "/", "*", "^", "root", "clear screen"]
 operator = {
     "1": "-",
     "2": "+",
     "3": "/",
     "4": "*",
     "5": "^",
-    "6": "square root",
+    "6": "root",
     "7": "clear screen"
 }
 
@@ -32,11 +33,11 @@ while True:
         os.system("cls" if os.name == "nt" else "clear")
         continue
     if question != "Y":
-        num1 = int(input("please enter first number ").strip().upper())
+        num1 = float(input("please enter first number ").strip().upper())
     
     
    
-    if operation != "square root":
+    if operation != "root":
         num2 = int(input("please enter second number ").strip().upper())
     if operation == "-":
         num3 = num1 - num2
@@ -52,13 +53,17 @@ while True:
         print(f"{num1} / {num2} = {num3}\n")
     elif operation == "^":
         num3 = num1 ** num2
-        print(f"{num1} to the power of{num2} is {num3}")
-    elif operation == "square root":
-        if num1 < 0:
-            print ("sorry but you can't entre a negitive number")
+        print(f"{num1} to the power of {num2} is {num3}")
+    elif operation == "root":
+        root = int(input("which root would you like? (2 = square, 3 = cube, etc): "))
+
+        if num1 < 0 and root % 2 == 0:
+            print("sorry but you can't enter a negative number for an even root")
             continue
-        num3 = math.sqrt(num1)
-        print(f"{num1}'s square root is {num3}")
+
+        num3 = num1 ** (1/root)
+
+        print(f"The {root} root of {num1} is {num3}")
     
     else:
         print("sorry but this operation dosn't exist")
